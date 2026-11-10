@@ -4,8 +4,8 @@ Recognize famous historical and natural places of Central Asia (Uzbekistan, Kaza
 Kyrgyzstan, Tajikistan, Turkmenistan) from a photo, then show facts, a map and — where the city is
 covered — a link to hotels on [Hotelia](https://hotelia.uz).
 
-Status: **Model A (embeddings + kNN) done.** Fine-tuned model, API and web UI come next. Local
-only.
+Status: **Model A (embeddings + kNN) and Model B (fine-tune) done and compared.** API and web UI
+come next. Local only.
 
 ## Setup
 
@@ -95,12 +95,45 @@ What the numbers do and do not say:
 - CLIP rejects unknowns better (0.889) but rejects far more real landmarks too. DINOv2 is
   stronger at telling similar Timurid buildings apart.
 
+## Model B: fine-tuned ConvNeXt-Tiny
+
+```sh
+python -m scripts.train_classifier   # first run downloads ImageNet weights (~110 MB)
+```
+
+- ConvNeXt-Tiny from ImageNet-1k weights, all layers trained: 15 epochs, AdamW, backbone LR
+  1e-4 and head LR 1e-3, cosine schedule, label smoothing 0.1, inverse-frequency class weights,
+  mild crop/flip/colour augmentation, seed 7.
+- Only the 23 landmarks are classes. "Unknown" comes from a threshold on the top softmax
+  probability, tuned on val as for Model A. The checkpoint with the best val top-1 is kept
+  (epoch 3; val top-1 stayed at 0.80–0.81 afterwards).
+- Training took 5 min on MPS. Output goes to `artifacts/model_b/` (model.pt, report.json).
+
+## Comparison on the same test set
+
+Run 2026-11-10; test = 111 landmark photos + 36 unknown; one training run (one seed).
+
+| Model | Threshold | Top-1 | Top-3 | Known accepted & right | Known wrongly rejected | Unknown rejected | Macro-F1 |
+|---|---|---|---|---|---|---|---|
+| A: DINOv2-base + kNN | 0.711 (cosine) | 0.802 | 0.937 | 0.667 | 0.234 | 0.694 | 0.683 |
+| B: ConvNeXt-Tiny fine-tune | 0.409 (softmax) | 0.802 | 0.955 | 0.658 | 0.279 | 0.722 | 0.721 |
+
+- **No clear winner on this data.** Both give the right final answer (landmark or "unknown")
+  for 99 of 147 test photos, but not the same ones: 23 are right only with A and 23 only with
+  B. Differences of 1–3 photos are within the noise of a test set this small.
+- They fail differently on Shah-i-Zinda's interior shots. A names them Gur-e Amir (7 of 9).
+  B mostly answers "unknown" (6 of 9). For a travel app, "unknown" is the safer mistake.
+- Trade-offs: A needs no training, and a new landmark is added by putting its photos in the
+  gallery. B needs retraining for new classes but is a single forward pass with no gallery.
+- Not tried: averaging the two models' answers. They disagree on many photos, so it might help,
+  but the combination would also have to be tuned on val only.
+
 ## Plan
 
 1. Catalog
 2. Image dataset (done) from Wikimedia Commons with a license manifest, author-separated test split and
    an "unknown places" set
 3. Model A: DINOv2/CLIP embeddings + kNN with an "unknown" threshold (done)
-4. Model B: fine-tuned classifier, compared on the same test set
+4. Model B: fine-tuned classifier, compared on the same test set (done)
 5. FastAPI service
 6. Next.js web app (EN/UZ): upload → result card → map → Hotelia link

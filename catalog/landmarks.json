@@ -1,0 +1,707 @@
+{
+  "source": "Wikidata",
+  "license": "CC0 1.0",
+  "fetched_on": "2026-11-09",
+  "landmarks": [
+    {
+      "id": "registan",
+      "qid": "Q1373583",
+      "country": "UZ",
+      "city": "Samarkand",
+      "category": "architecture",
+      "hotelia_destination": "Samarkand",
+      "names": {
+        "en": "Registan",
+        "uz": "Registon majmuasi (Ulugʻbek, Sherdor, Tilla Kori)",
+        "ru": "Регистан"
+      },
+      "display_names": {
+        "en": "Registan",
+        "uz": "Registon"
+      },
+      "descriptions": {
+        "en": "historical center of Samarkand, Uzbekistan",
+        "uz": "best",
+        "ru": "достопримечателность"
+      },
+      "latitude": 39.654722222222,
+      "longitude": 66.975555555556,
+      "unesco_site_qid": "Q17255582",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Registan",
+        "uz": "https://uz.wikipedia.org/wiki/Registon_maydoni",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D0%B0%D0%BD_(%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4)"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1373583",
+      "commons_category": "Registan"
+    },
+    {
+      "id": "gur-e-amir",
+      "qid": "Q1256223",
+      "country": "UZ",
+      "city": "Samarkand",
+      "category": "architecture",
+      "hotelia_destination": "Samarkand",
+      "names": {
+        "en": "Gur-e Amir",
+        "uz": "Amir Temur maqbarasi majmua",
+        "ru": "Гур Эмир"
+      },
+      "display_names": {
+        "en": "Gur-e Amir",
+        "uz": "Goʻri Amir"
+      },
+      "descriptions": {
+        "en": "mausoleum in Samarkand, Uzbekistan"
+      },
+      "latitude": 39.648333333333,
+      "longitude": 66.968888888889,
+      "unesco_site_qid": "Q17255582",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Gur-e-Amir",
+        "uz": "https://uz.wikipedia.org/wiki/Go%CA%BBri_Amir",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%83%D1%80-%D0%AD%D0%BC%D0%B8%D1%80"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1256223",
+      "commons_category": "Gur-e Amir"
+    },
+    {
+      "id": "shah-i-zinda",
+      "qid": "Q671935",
+      "country": "UZ",
+      "city": "Samarkand",
+      "category": "architecture",
+      "hotelia_destination": "Samarkand",
+      "names": {
+        "en": "Shah-i-Zinda",
+        "uz": "Shohi-Zinda majmuasi",
+        "ru": "Шахи Зинда"
+      },
+      "display_names": {
+        "en": "Shah-i-Zinda",
+        "uz": "Shohi Zinda"
+      },
+      "descriptions": {
+        "en": "necropolis in Samarkand, Uzbekistan"
+      },
+      "latitude": 39.66262,
+      "longitude": 66.987878,
+      "unesco_site_qid": "Q17255582",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Shah-i-Zinda",
+        "uz": "https://uz.wikipedia.org/wiki/Shohizinda",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D1%85%D0%B8-%D0%97%D0%B8%D0%BD%D0%B4%D0%B0"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q671935",
+      "commons_category": "Shah-i-Zinda"
+    },
+    {
+      "id": "bibi-khanym",
+      "qid": "Q679218",
+      "country": "UZ",
+      "city": "Samarkand",
+      "category": "architecture",
+      "hotelia_destination": "Samarkand",
+      "names": {
+        "en": "Bibi-Khanym Mosque",
+        "uz": "Bibi-Xonim masjid majmuasi",
+        "ru": "Биби Ханум"
+      },
+      "display_names": {
+        "en": "Bibi-Khanym Mosque",
+        "uz": "Bibi-Xonim masjid majmuasi"
+      },
+      "descriptions": {
+        "en": "historical mosque in Samarkand, Uzbekistan",
+        "uz": "Samarqanddagi meʼmoriy yodgorlik"
+      },
+      "latitude": 39.660555555556,
+      "longitude": 66.979722222222,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Bibi-Khanym_Mosque",
+        "uz": "https://uz.wikipedia.org/wiki/Bibixonim_jome_masjidi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%91%D0%B8%D0%B1%D0%B8-%D0%A5%D0%B0%D0%BD%D1%8B%D0%BC"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q679218",
+      "commons_category": "Bibi-Khanym Mosque"
+    },
+    {
+      "id": "kalyan-minaret",
+      "qid": "Q4294007",
+      "country": "UZ",
+      "city": "Bukhara",
+      "category": "architecture",
+      "hotelia_destination": "Bukhara",
+      "names": {
+        "en": "Kalyan Minaret",
+        "uz": "Minorai Kalon",
+        "ru": "Минарет Калян"
+      },
+      "display_names": {
+        "en": "Kalyan Minaret",
+        "uz": "Minorai Kalon"
+      },
+      "descriptions": {
+        "en": "minaret in Bukhara, Uzbekistan; the last surviving fragment of the Kara-khanid era mosque built by Mohammad Arslan Khan in 1127",
+        "uz": "Buxorodagi meʼmoriy yodgorlik"
+      },
+      "latitude": 39.77567778,
+      "longitude": 64.41501111,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Kalyan_Minaret",
+        "uz": "https://uz.wikipedia.org/wiki/Minorai_Kalon",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%B0%D1%80%D0%B5%D1%82_%D0%9A%D0%B0%D0%BB%D1%8F%D0%BD"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4294007",
+      "commons_category": "Kalyan minaret"
+    },
+    {
+      "id": "ark-of-bukhara",
+      "qid": "Q4069358",
+      "country": "UZ",
+      "city": "Bukhara",
+      "category": "architecture",
+      "hotelia_destination": "Bukhara",
+      "names": {
+        "en": "Ark of Bukhara",
+        "uz": "Ark",
+        "ru": "Арк"
+      },
+      "display_names": {
+        "en": "Ark of Bukhara",
+        "uz": "Buxoro Arki"
+      },
+      "descriptions": {
+        "en": "fortress located in the city of Bukhara, Uzbekistan",
+        "uz": "Buxorodagi qadimiy shaharsozlik yodgorligi",
+        "ru": "Древняя цитадель в Бухаре, Узбекистан"
+      },
+      "latitude": 39.77777777777778,
+      "longitude": 64.41027777777778,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Ark_of_Bukhara",
+        "uz": "https://uz.wikipedia.org/wiki/Buxoro_arki",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%BA_(%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0)"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4069358",
+      "commons_category": "Ark Fortress in Bukhara"
+    },
+    {
+      "id": "lab-i-hauz",
+      "qid": "Q4272468",
+      "country": "UZ",
+      "city": "Bukhara",
+      "category": "architecture",
+      "hotelia_destination": "Bukhara",
+      "names": {
+        "en": "Lab-i Hauz",
+        "uz": "Labi Hovuz",
+        "ru": "Ляби-хауз"
+      },
+      "display_names": {
+        "en": "Lab-i Hauz",
+        "uz": "Labi Hovuz"
+      },
+      "descriptions": {
+        "en": "Hauz complex in Bukhara, Uzbekistan",
+        "ru": "одна из центральных площадей Бухары"
+      },
+      "latitude": 39.773076423965236,
+      "longitude": 64.42024338087363,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Lab-i_Hauz",
+        "uz": "https://uz.wikipedia.org/wiki/Labi_Hovuz_ansambli",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D1%8F%D0%B1%D0%B8-%D1%85%D0%B0%D1%83%D0%B7"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4272468",
+      "commons_category": "Lab-i Hauz"
+    },
+    {
+      "id": "samanid-mausoleum",
+      "qid": "Q1268850",
+      "country": "UZ",
+      "city": "Bukhara",
+      "category": "architecture",
+      "hotelia_destination": "Bukhara",
+      "names": {
+        "en": "Samanid Mausoleum",
+        "uz": "Ismoil Somoniy maqbarasi",
+        "ru": "Мавзолей Саманидов"
+      },
+      "display_names": {
+        "en": "Samanid Mausoleum",
+        "uz": "Ismoil Somoniy maqbarasi"
+      },
+      "descriptions": {
+        "en": "mausoleum",
+        "uz": "Ismoil Somoniy qabri"
+      },
+      "latitude": 39.77701120929684,
+      "longitude": 64.40058034929567,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Samanid_Mausoleum",
+        "uz": "https://uz.wikipedia.org/wiki/Somoniylar_maqbarasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B2%D0%B7%D0%BE%D0%BB%D0%B5%D0%B9_%D0%A1%D0%B0%D0%BC%D0%B0%D0%BD%D0%B8%D0%B4%D0%BE%D0%B2"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1268850",
+      "commons_category": "Samanid Mausoleum"
+    },
+    {
+      "id": "chor-minor",
+      "qid": "Q4517198",
+      "country": "UZ",
+      "city": "Bukhara",
+      "category": "architecture",
+      "hotelia_destination": "Bukhara",
+      "names": {
+        "en": "Chor Minor",
+        "uz": "Chor minor",
+        "ru": "Чор-Минор"
+      },
+      "display_names": {
+        "en": "Chor Minor",
+        "uz": "Chor Minor"
+      },
+      "descriptions": {
+        "en": "mosque in Bukhara, Uzbekistan",
+        "uz": "Buxorodagi meʼmoriy yodgorlik"
+      },
+      "latitude": 39.774827063736865,
+      "longitude": 64.42736863898702,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Chor_Minor",
+        "uz": "https://uz.wikipedia.org/wiki/Chor_Minor",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%BE%D1%80-%D0%9C%D0%B8%D0%BD%D0%BE%D1%80"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4517198",
+      "commons_category": "Chor Minor"
+    },
+    {
+      "id": "kalta-minor",
+      "qid": "Q4294004",
+      "country": "UZ",
+      "city": "Khiva",
+      "category": "architecture",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Kalta Minor",
+        "uz": "Kaltaminor",
+        "ru": "Минарет Кальта-Минар"
+      },
+      "display_names": {
+        "en": "Kalta Minor",
+        "uz": "Kalta Minor"
+      },
+      "descriptions": {
+        "en": "minaret in Khiva",
+        "uz": "Xivadagi koʻrkam minora"
+      },
+      "latitude": 41.37824,
+      "longitude": 60.35805,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Kaltaminor",
+        "uz": "https://uz.wikipedia.org/wiki/Kaltaminor",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BB%D1%8C%D1%82%D0%B0-%D0%9C%D0%B8%D0%BD%D0%B0%D1%80"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4294004",
+      "commons_category": "Kalta Minor"
+    },
+    {
+      "id": "islam-khodja-minaret",
+      "qid": "Q28122558",
+      "country": "UZ",
+      "city": "Khiva",
+      "category": "architecture",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Islam Khodja minaret",
+        "uz": "Islomxo‘ja minorasi",
+        "ru": "Минарет Ислам-ходжа"
+      },
+      "display_names": {
+        "en": "Islam Khodja minaret",
+        "uz": "Islomxo‘ja minorasi"
+      },
+      "descriptions": {},
+      "latitude": 41.37659,
+      "longitude": 60.36012,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "uz": "https://uz.wikipedia.org/wiki/Islomxo%E2%80%98ja_minorasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%B0%D1%80%D0%B5%D1%82_%D0%98%D1%81%D0%BB%D0%B0%D0%BC-%D1%85%D0%BE%D0%B4%D0%B6%D0%B0"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q28122558",
+      "commons_category": "Minaret of Islam Khodja Madrasa"
+    },
+    {
+      "id": "hazrat-imam",
+      "qid": "Q18604486",
+      "country": "UZ",
+      "city": "Tashkent",
+      "category": "architecture",
+      "hotelia_destination": "Tashkent",
+      "names": {
+        "en": "Ensemble Hazrat Imam",
+        "uz": "Hazrati Imom majmuasi",
+        "ru": "Хазрет Имам"
+      },
+      "display_names": {
+        "en": "Ensemble Hazrat Imam",
+        "uz": "Hazrati Imom majmuasi"
+      },
+      "descriptions": {
+        "en": "religious complex in Tashkent, Uzbekistan"
+      },
+      "latitude": 41.337376,
+      "longitude": 69.239904,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Hazrati_Imam_Complex",
+        "uz": "https://uz.wikipedia.org/wiki/Hazrati_Imom_majmuasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D1%81%D0%B0%D0%BC%D0%B1%D0%BB%D1%8C_%D0%A5%D0%B0%D0%B7%D1%80%D0%B0%D1%82%D0%B8_%D0%98%D0%BC%D0%B0%D0%BC"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q18604486",
+      "commons_category": "Ensemble Hazrat Imam"
+    },
+    {
+      "id": "tashkent-tower",
+      "qid": "Q868874",
+      "country": "UZ",
+      "city": "Tashkent",
+      "category": "monument",
+      "hotelia_destination": "Tashkent",
+      "names": {
+        "en": "Tashkent Tower",
+        "uz": "Toshkent teleminorasi",
+        "ru": "Ташкентская телебашня"
+      },
+      "display_names": {
+        "en": "Tashkent Tower",
+        "uz": "Toshkent teleminorasi"
+      },
+      "descriptions": {
+        "en": "structure in Uzbekistan",
+        "uz": "Oʻzbekistondagi eng baland imorat",
+        "ru": "телевизионная и радиовещательная башня в Ташкенте"
+      },
+      "latitude": 41.345569444444,
+      "longitude": 69.284602777778,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Tashkent_Tower",
+        "uz": "https://uz.wikipedia.org/wiki/Toshkent_teleminorasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B0%D1%8F_%D1%82%D0%B5%D0%BB%D0%B5%D0%B1%D0%B0%D1%88%D0%BD%D1%8F"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q868874",
+      "commons_category": "Tashkent TV tower"
+    },
+    {
+      "id": "khoja-ahmed-yasawi",
+      "qid": "Q46069",
+      "country": "KZ",
+      "city": "Turkistan",
+      "category": "architecture",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Mausoleum of Khoja Ahmed Yasawi",
+        "uz": "Hoja Ahmad Yassaviy maqbarasi",
+        "ru": "Мавзолей Ходжи Ахмеда Ясави"
+      },
+      "display_names": {
+        "en": "Mausoleum of Khoja Ahmed Yasawi",
+        "uz": "Hoja Ahmad Yassaviy maqbarasi"
+      },
+      "descriptions": {
+        "en": "mausoleum in the city of Turkistan, Kazakhstan",
+        "ru": "мавзолей в Туркестане"
+      },
+      "latitude": 43.2976445,
+      "longitude": 68.2710419,
+      "unesco_site_qid": "Q46069",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Mausoleum_of_Khoja_Ahmed_Yasawi",
+        "uz": "https://uz.wikipedia.org/wiki/Xoja_Ahmad_Yassaviy_maqbarasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B2%D0%B7%D0%BE%D0%BB%D0%B5%D0%B9_%D0%A5%D0%BE%D0%B4%D0%B6%D0%B8_%D0%90%D1%85%D0%BC%D0%B5%D0%B4%D0%B0_%D0%AF%D1%81%D0%B0%D0%B2%D0%B8"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q46069",
+      "commons_category": "Mausoleum of Khoja Ahmed Yasawi"
+    },
+    {
+      "id": "ascension-cathedral-almaty",
+      "qid": "Q1078589",
+      "country": "KZ",
+      "city": "Almaty",
+      "category": "architecture",
+      "hotelia_destination": "Almaty",
+      "names": {
+        "en": "Ascension Cathedral",
+        "ru": "Вознесенский собор (Алма-Ата)"
+      },
+      "display_names": {
+        "en": "Ascension Cathedral",
+        "uz": "Almati Vozneseniye sobori"
+      },
+      "descriptions": {
+        "en": "church in Almaty, Kazakhstan",
+        "ru": "православный храм в Алма-Ате"
+      },
+      "latitude": 43.258611111111,
+      "longitude": 76.953333333333,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Ascension_Cathedral,_Almaty",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_(%D0%90%D0%BB%D0%BC%D0%B0-%D0%90%D1%82%D0%B0)"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1078589",
+      "commons_category": "Ascension Cathedral, Almaty"
+    },
+    {
+      "id": "charyn-canyon",
+      "qid": "Q2231598",
+      "country": "KZ",
+      "city": null,
+      "category": "nature",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Charyn Canyon",
+        "uz": "Sharin darasi",
+        "ru": "Чарынский каньон"
+      },
+      "display_names": {
+        "en": "Charyn Canyon",
+        "uz": "Sharin darasi"
+      },
+      "descriptions": {
+        "en": "canyon on the Charyn River in Kazakhstan",
+        "ru": "каньон в Казахстане"
+      },
+      "latitude": 43.361944444444,
+      "longitude": 79.090555555556,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Charyn_Canyon",
+        "uz": "https://uz.wikipedia.org/wiki/Sharin_darasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%80%D1%8B%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BD%D1%8C%D0%BE%D0%BD"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q2231598",
+      "commons_category": "Sharyn canyon"
+    },
+    {
+      "id": "big-almaty-lake",
+      "qid": "Q4092255",
+      "country": "KZ",
+      "city": null,
+      "category": "nature",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Big Almaty Lake",
+        "ru": "Большое Алматинское озеро"
+      },
+      "display_names": {
+        "en": "Big Almaty Lake",
+        "uz": "Katta Almati koʻli"
+      },
+      "descriptions": {
+        "en": "lake in Kazakhstan",
+        "ru": "Горное озеро в Заилийском Алатау, Казахстан"
+      },
+      "latitude": 43.050555555556,
+      "longitude": 76.985,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Big_Almaty_Lake",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B5_%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%BE%D0%B7%D0%B5%D1%80%D0%BE"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4092255",
+      "commons_category": "Bolshoye Almatinskoye lake"
+    },
+    {
+      "id": "burana-tower",
+      "qid": "Q852032",
+      "country": "KG",
+      "city": null,
+      "category": "architecture",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Burana Tower",
+        "uz": "Burana minorasi",
+        "ru": "Башня Бурана"
+      },
+      "display_names": {
+        "en": "Burana Tower",
+        "uz": "Burana minorasi"
+      },
+      "descriptions": {
+        "en": "minaret"
+      },
+      "latitude": 42.746476,
+      "longitude": 75.250382,
+      "unesco_site_qid": "Q852032",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Burana_Tower",
+        "uz": "https://uz.wikipedia.org/wiki/Burana_minorasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_%D0%91%D1%83%D1%80%D0%B0%D0%BD%D0%B0"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q852032",
+      "commons_category": "Burana tower"
+    },
+    {
+      "id": "ala-too-square",
+      "qid": "Q2988303",
+      "country": "KG",
+      "city": "Bishkek",
+      "category": "monument",
+      "hotelia_destination": "Bishkek",
+      "names": {
+        "en": "Ala-Too Square",
+        "ru": "Площадь Ала-Тоо"
+      },
+      "display_names": {
+        "en": "Ala-Too Square",
+        "uz": "Ala-Too maydoni"
+      },
+      "descriptions": {
+        "en": "central square in Bishkek, Kyrgyzstan"
+      },
+      "latitude": 42.87638889,
+      "longitude": 74.60388889,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Ala-Too_Square",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C_%D0%90%D0%BB%D0%B0-%D0%A2%D0%BE%D0%BE"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q2988303",
+      "commons_category": "Ala-Too Square"
+    },
+    {
+      "id": "sulaiman-too",
+      "qid": "Q750190",
+      "country": "KG",
+      "city": "Osh",
+      "category": "nature",
+      "hotelia_destination": "Osh",
+      "names": {
+        "en": "Sulaiman-Too",
+        "uz": "Sulaymon togʻi",
+        "ru": "Сулайман-Тоо"
+      },
+      "display_names": {
+        "en": "Sulaiman-Too",
+        "uz": "Sulaymon togʻi"
+      },
+      "descriptions": {
+        "en": "mountain in Osh city, Kyrgyzstan",
+        "ru": "гора в границах города Ош, Кыргызстан"
+      },
+      "latitude": 40.529444444444,
+      "longitude": 72.783333333333,
+      "unesco_site_qid": "Q750190",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Sulayman_Mountain",
+        "uz": "https://uz.wikipedia.org/wiki/Sulaymon_tog%CA%BBi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D0%BB%D0%B0%D0%B9%D0%BC%D0%B0%D0%BD-%D0%A2%D0%BE%D0%BE"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q750190",
+      "commons_category": "Sulayman Mountain"
+    },
+    {
+      "id": "iskanderkul",
+      "qid": "Q2478596",
+      "country": "TJ",
+      "city": null,
+      "category": "nature",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Iskanderkul",
+        "uz": "Iskandarkoʻl",
+        "ru": "Искандеркуль"
+      },
+      "display_names": {
+        "en": "Iskanderkul",
+        "uz": "Iskandarkoʻl"
+      },
+      "descriptions": {
+        "en": "lake in Tajikistan"
+      },
+      "latitude": 39.074444444444,
+      "longitude": 68.368333333333,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Iskanderkul",
+        "uz": "https://uz.wikipedia.org/wiki/Iskandarko%CA%BBl",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BA%D0%B0%D0%BD%D0%B4%D0%B5%D1%80%D0%BA%D1%83%D0%BB%D1%8C"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q2478596",
+      "commons_category": "Iskanderkul"
+    },
+    {
+      "id": "sultan-sanjar-mausoleum",
+      "qid": "Q4273784",
+      "country": "TM",
+      "city": "Merv",
+      "category": "architecture",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Sultan Sanjar's mausoleum",
+        "uz": "Sulton Sanjar maqbarasi",
+        "ru": "Мавзолей Санджара"
+      },
+      "display_names": {
+        "en": "Sultan Sanjar's mausoleum",
+        "uz": "Sulton Sanjar maqbarasi"
+      },
+      "descriptions": {
+        "en": "mausoleum in Merv, Turkmenistan",
+        "ru": "Мавзолей сельджукского султана Ахмада Санджара, расположенный в городе Мерве"
+      },
+      "latitude": 37.6643,
+      "longitude": 62.1637,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Tomb_of_Ahmad_Sanjar",
+        "uz": "https://uz.wikipedia.org/wiki/Sulton_Sanjar_maqbarasi",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B2%D0%B7%D0%BE%D0%BB%D0%B5%D0%B9_%D1%81%D1%83%D0%BB%D1%82%D0%B0%D0%BD%D0%B0_%D0%A1%D0%B0%D0%BD%D0%B4%D0%B6%D0%B0%D1%80%D0%B0"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q4273784",
+      "commons_category": "Sultan Sanjar mausoleum"
+    },
+    {
+      "id": "darvaza-gas-crater",
+      "qid": "Q70458",
+      "country": "TM",
+      "city": null,
+      "category": "nature",
+      "hotelia_destination": null,
+      "names": {
+        "en": "Darvaza gas crater",
+        "uz": "Darvaza gaz krateri",
+        "ru": "Дарваза"
+      },
+      "display_names": {
+        "en": "Darvaza gas crater",
+        "uz": "Darvaza gaz krateri"
+      },
+      "descriptions": {
+        "en": "burning natural gas field in Turkmenistan",
+        "ru": "кратер на Земле"
+      },
+      "latitude": 40.25263,
+      "longitude": 58.43939,
+      "unesco_site_qid": null,
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Darvaza_gas_crater",
+        "uz": "https://uz.wikipedia.org/wiki/Darvaza_gaz_krateri",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D1%80%D0%B2%D0%B0%D0%B7%D0%B0"
+      },
+      "wikidata_url": "https://www.wikidata.org/wiki/Q70458",
+      "commons_category": "Derweze gas fire"
+    }
+  ]
+}

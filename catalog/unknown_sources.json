@@ -1,0 +1,12 @@
+[
+  {"id": "shah-mosque-isfahan", "category": "Shah Mosque (Isfahan)", "kind": "similar architecture"},
+  {"id": "sheikh-lotfollah-mosque", "category": "Sheikh Lotfollah Mosque", "kind": "similar architecture"},
+  {"id": "taj-mahal", "category": "Taj Mahal", "kind": "similar architecture"},
+  {"id": "cn-tower", "category": "CN Tower", "kind": "tower"},
+  {"id": "ostankino-tower", "category": "Ostankino Tower", "kind": "tower"},
+  {"id": "grand-canyon", "category": "Grand Canyon", "kind": "nature"},
+  {"id": "antelope-canyon", "category": "Antelope Canyon", "kind": "nature"},
+  {"id": "lake-bled", "category": "Lake Bled", "kind": "nature"},
+  {"id": "moraine-lake", "category": "Moraine Lake", "kind": "nature"},
+  {"id": "streets-of-seoul", "category": "Streets in Seoul", "kind": "everyday"}
+]

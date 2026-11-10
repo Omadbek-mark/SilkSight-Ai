@@ -135,3 +135,12 @@ def read_exclusions(path: Path) -> dict[str, str]:
         return {}
     with path.open(encoding="utf-8", newline="") as file:
         return {row["title"]: row["reason"] for row in csv.DictReader(file)}
+
+
+def representative_photos(rows: list[ManifestRow]) -> dict[str, ManifestRow]:
+    """One training photo per landmark for display, chosen by title so it stays stable."""
+    photos: dict[str, ManifestRow] = {}
+    for row in sorted(rows, key=lambda row: row.title):
+        if row.split == "train" and row.label != UNKNOWN_LABEL:
+            photos.setdefault(row.label, row)
+    return photos

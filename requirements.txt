@@ -4,3 +4,6 @@ numpy==2.5.4
 torch==2.15.0
 torchvision==0.29.2
 transformers==5.22.2
+fastapi==0.162.2
+uvicorn==0.54.0
+python-multipart==0.0.33

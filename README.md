@@ -4,8 +4,8 @@ Recognize famous historical and natural places of Central Asia (Uzbekistan, Kaza
 Kyrgyzstan, Tajikistan, Turkmenistan) from a photo, then show facts, a map and — where the city is
 covered — a link to hotels on [Hotelia](https://hotelia.uz).
 
-Status: **Model A (embeddings + kNN) and Model B (fine-tune) done and compared.** API and web UI
-come next. Local only.
+Status: **both models and the FastAPI service are ready.** The Next.js web UI comes next. Local
+only.
 
 ## Setup
 
@@ -128,6 +128,42 @@ Run 2026-11-10; test = 111 landmark photos + 36 unknown; one training run (one s
 - Not tried: averaging the two models' answers. They disagree on many photos, so it might help,
   but the combination would also have to be tuned on val only.
 
+## API (FastAPI)
+
+```sh
+uvicorn silksight.api:create_app --factory --host 127.0.0.1 --port 8000
+# docs: http://127.0.0.1:8000/docs
+```
+
+| Method | Path | Returns |
+|---|---|---|
+| GET | `/api/health` | status, landmark count, models loaded so far |
+| GET | `/api/landmarks` | all landmarks: names (en/uz), country, city, coordinates, photo |
+| GET | `/api/landmarks/{id}` | plus Wikidata names/descriptions, Wikipedia links, UNESCO site, Hotelia link |
+| POST | `/api/recognize?model=knn\|classifier` | `recognized`, `landmark`, top-3 `candidates` with scores, `threshold`, `score_kind` |
+| GET | `/images/...` | dataset photos; each `photo` object carries author, license and source page |
+
+- Upload: one JPEG/PNG/WebP, at most 10 MB and 40 MP. The format and size are checked from the
+  header before decoding, and EXIF orientation is applied. Errors are 422 (bad file or model
+  name) and 413 (too large). The photo stays in memory: it is not saved, its metadata is not
+  kept, and it is not sent anywhere.
+- `model` defaults to `knn` (Model A). The two models tied on test; kNN can take new landmarks
+  without retraining. Both models load on first use. One lock serializes model loading and
+  inference in the single local process.
+- Below the threshold the answer is `recognized: false`, but the top-3 candidates are still
+  returned, so the UI can say "not sure — maybe…". Scores are model scores (`score_kind`), not
+  accuracy.
+- `hotelia_url` is `null` when the landmark's city is not a Hotelia destination.
+
+Live check (2026-11-10, MPS): the first kNN request took 4.4 s (loading DINOv2) and later
+requests about 0.04 s. The first classifier request took 1.0 s. A Registan test photo was right
+with the classifier but named Gur-e Amir by kNN. A Taj Mahal photo was "unknown" for both.
+Path traversal under `/images` (`..` and `%2e%2e`, sent unnormalized) returns 404. CORS allows
+only the local Next.js origin (`localhost:3000`).
+
+Known gap: Wikidata descriptions are short and sometimes wrong. The Uzbek description of
+Registan is literally "best". This is not enough for the "detailed info" goal yet.
+
 ## Plan
 
 1. Catalog
@@ -135,5 +171,5 @@ Run 2026-11-10; test = 111 landmark photos + 36 unknown; one training run (one s
    an "unknown places" set
 3. Model A: DINOv2/CLIP embeddings + kNN with an "unknown" threshold (done)
 4. Model B: fine-tuned classifier, compared on the same test set (done)
-5. FastAPI service
+5. FastAPI service (done)
 6. Next.js web app (EN/UZ): upload → result card → map → Hotelia link

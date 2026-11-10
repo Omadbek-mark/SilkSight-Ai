@@ -101,3 +101,10 @@ def hotelia_url(
     if check_in and check_out:
         params |= {"checkIn": check_in, "checkOut": check_out}
     return f"{HOTELIA_BASE_URL}/hotel?{urlencode(params)}"
+
+
+def load_catalog(path: Path) -> dict[str, dict]:
+    """Built landmark facts (``scripts.build_catalog`` output) keyed by landmark id."""
+    with path.open(encoding="utf-8") as file:
+        data = json.load(file)
+    return {landmark["id"]: landmark for landmark in data["landmarks"]}

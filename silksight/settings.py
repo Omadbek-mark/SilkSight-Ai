@@ -8,6 +8,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CATALOG_SEED_PATH = PROJECT_ROOT / "catalog/landmarks.seed.json"
 CATALOG_PATH = PROJECT_ROOT / "catalog/landmarks.json"
 UNKNOWN_SOURCES_PATH = PROJECT_ROOT / "catalog/unknown_sources.json"
+SUMMARIES_PATH = PROJECT_ROOT / "catalog/summaries.json"
+SUMMARY_LANGUAGES = ("en", "uz")
 
 # Images are local only (git-ignored); the manifest and manual exclusions are versioned.
 DATA_DIR = PROJECT_ROOT / "data"

@@ -45,7 +45,7 @@ class CommonsImage:
     license_url: str
 
 
-def _request(url: str, params: dict | None = None) -> requests.Response:
+def polite_get(url: str, params: dict | None = None) -> requests.Response:
     """GET politely: one request at a time, backing off on HTTP 429."""
     for attempt in range(1, MAX_ATTEMPTS + 1):
         time.sleep(REQUEST_PAUSE_SECONDS)
@@ -70,7 +70,7 @@ def _request(url: str, params: dict | None = None) -> requests.Response:
 
 def _get(params: dict) -> dict:
     query = {"action": "query", "format": "json", "formatversion": "2"}
-    response = _request(COMMONS_API_URL, params | query)
+    response = polite_get(COMMONS_API_URL, params | query)
     if not response.headers.get("content-type", "").startswith("application/json"):
         raise CommonsError("Commons API did not return JSON")
     return response.json()
@@ -79,7 +79,7 @@ def _get(params: dict) -> dict:
 def download(image: "CommonsImage") -> bytes:
     if not image.thumb_url.startswith(IMAGE_HOSTS) or "/thumb/" not in image.thumb_url:
         raise CommonsError(f"not a standard Wikimedia thumbnail: {image.thumb_url}")
-    return _request(image.thumb_url).content
+    return polite_get(image.thumb_url).content
 
 
 def plain_text(value: str) -> str:

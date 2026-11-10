@@ -139,7 +139,7 @@ uvicorn silksight.api:create_app --factory --host 127.0.0.1 --port 8000
 |---|---|---|
 | GET | `/api/health` | status, landmark count, models loaded so far |
 | GET | `/api/landmarks` | all landmarks: names (en/uz), country, city, coordinates, photo |
-| GET | `/api/landmarks/{id}` | plus Wikidata names/descriptions, Wikipedia links, UNESCO site, Hotelia link |
+| GET | `/api/landmarks/{id}` | plus Wikipedia lead text (en/uz, attributed), Wikidata names, UNESCO site, Hotelia link |
 | POST | `/api/recognize?model=knn\|classifier` | `recognized`, `landmark`, top-3 `candidates` with scores, `threshold`, `score_kind` |
 | GET | `/images/...` | dataset photos; each `photo` object carries author, license and source page |
 
@@ -161,8 +161,25 @@ with the classifier but named Gur-e Amir by kNN. A Taj Mahal photo was "unknown"
 Path traversal under `/images` (`..` and `%2e%2e`, sent unnormalized) returns 404. CORS allows
 only the local Next.js origin (`localhost:3000`).
 
-Known gap: Wikidata descriptions are short and sometimes wrong. The Uzbek description of
-Registan is literally "best". This is not enough for the "detailed info" goal yet.
+## Landmark texts (Wikipedia)
+
+```sh
+python -m scripts.build_summaries   # network: one batched request per language
+```
+
+Wikidata descriptions are one line and sometimes wrong (the Uzbek description of Registan is
+literally "best"). For the detail page, the lead section of each landmark's English and Uzbek
+Wikipedia article is therefore copied into `catalog/summaries.json`, and `/api/landmarks/{id}`
+returns it as `summary`.
+
+- The text is copied, not rewritten or summarized by a language model. Only whitespace and
+  empty brackets left by removed markup are tidied.
+- Each text keeps its article title, URL, revision id and license (CC BY-SA 4.0), so the UI can
+  credit and link it. A language without an article is left out, not machine-translated.
+- Fetched 2026-11-10: English 22/23, Uzbek 20/23. Missing: English for Islam Khodja minaret;
+  Uzbek for Ascension Cathedral, Big Almaty Lake and Ala-Too Square. Lengths vary a lot, from
+  105 to 6,347 characters (the Uzbek Bibi-Khanym article has no sections), so the UI should
+  shorten long texts.
 
 ## Plan
 

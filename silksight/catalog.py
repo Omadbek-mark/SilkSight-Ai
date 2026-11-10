@@ -108,3 +108,11 @@ def load_catalog(path: Path) -> dict[str, dict]:
     with path.open(encoding="utf-8") as file:
         data = json.load(file)
     return {landmark["id"]: landmark for landmark in data["landmarks"]}
+
+
+def load_summaries(path: Path) -> dict[str, dict]:
+    """Wikipedia lead texts (``scripts.build_summaries`` output); empty if not built yet."""
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as file:
+        return json.load(file)["summaries"]

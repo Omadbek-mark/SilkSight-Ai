@@ -123,3 +123,14 @@ def test_exif_orientation_is_applied_before_recognition(client, fake):
     client.post("/api/recognize", files={"file": ("a.jpg", buffer.getvalue(), "image/jpeg")})
 
     assert fake.calls == [((48, 64), "knn")]
+
+
+def test_landmark_detail_carries_attributed_wikipedia_text_without_translation(client):
+    registan = client.get("/api/landmarks/registan").json()["summary"]
+    almaty_lake = client.get("/api/landmarks/big-almaty-lake").json()["summary"]
+
+    assert registan["uz"]["text"].startswith("Registon")
+    assert registan["en"]["license"] == "CC BY-SA 4.0"
+    assert registan["en"]["url"].startswith("https://en.wikipedia.org/")
+    assert registan["en"]["revision_id"] > 0
+    assert "uz" not in almaty_lake  # no Uzbek article: left out, not translated

@@ -12,10 +12,16 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from silksight.catalog import hotelia_url, load_catalog
+from silksight.catalog import hotelia_url, load_catalog, load_summaries
 from silksight.dataset import ManifestRow, read_manifest, representative_photos
 from silksight.recognizer import MODEL_NAMES, ModelUnavailableError, Recognizers
-from silksight.settings import APP_NAME, CATALOG_PATH, IMAGES_DIR, MANIFEST_PATH
+from silksight.settings import (
+    APP_NAME,
+    CATALOG_PATH,
+    IMAGES_DIR,
+    MANIFEST_PATH,
+    SUMMARIES_PATH,
+)
 from silksight.uploads import MAX_UPLOAD_BYTES, UploadError, read_upload
 
 DEFAULT_MODEL = "knn"
@@ -38,6 +44,7 @@ def _photo(row: ManifestRow | None) -> dict | None:
 
 def create_app(recognizers: Recognizers | None = None) -> FastAPI:
     catalog = load_catalog(CATALOG_PATH)
+    summaries = load_summaries(SUMMARIES_PATH)
     photos = representative_photos(read_manifest(MANIFEST_PATH))
     models = recognizers or Recognizers()
 
@@ -77,6 +84,9 @@ def create_app(recognizers: Recognizers | None = None) -> FastAPI:
             "descriptions": item["descriptions"],
             "unesco_site_qid": item["unesco_site_qid"],
             "wikipedia": item["wikipedia"],
+            # Wikipedia lead text per language (CC BY-SA, with title/URL/revision for credit);
+            # a missing language is absent, not machine-translated.
+            "summary": summaries.get(landmark_id, {}),
             "wikidata_url": item["wikidata_url"],
             "hotelia_url": hotelia_url(item["hotelia_destination"]),
             "facts_source": "Wikidata (CC0)",

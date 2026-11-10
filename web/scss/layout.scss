@@ -1,0 +1,64 @@
+@use 'variables' as *;
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	&__header {
+		background: $paper;
+		border-bottom: 1px solid $line;
+	}
+	&__bar {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px 24px;
+		min-height: 64px;
+		padding: 8px 0;
+	}
+	&__brand {
+		font-family: $serif;
+		font-size: 26px;
+		color: $lapis;
+		span {
+			color: $saffron;
+		}
+	}
+	&__nav {
+		display: flex;
+		gap: 20px;
+		flex: 1;
+		@media (max-width: 600px) {
+			order: 3;
+			flex-basis: 100%;
+		}
+		a {
+			color: $muted;
+			font-weight: 500;
+			&.is-active,
+			&:hover {
+				color: $lapis;
+			}
+		}
+	}
+	&__locales a {
+		padding: 4px 8px;
+		border-radius: $radius;
+		color: $muted;
+		font-size: 14px;
+		font-weight: 600;
+		&.is-active {
+			background: $lapis;
+			color: $paper;
+		}
+	}
+	&__main {
+		flex: 1;
+		padding: 40px 0 64px;
+	}
+	&__footer {
+		border-top: 1px solid $line;
+		padding: 24px 0;
+	}
+}

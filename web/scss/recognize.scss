@@ -1,0 +1,84 @@
+@use 'variables' as *;
+
+.recognize-page {
+	&__hero {
+		max-width: 760px;
+		margin-bottom: 32px;
+		h1 {
+			font-size: clamp(36px, 5vw, 56px);
+			line-height: 1.05;
+			margin-bottom: 16px;
+		}
+	}
+	&__subtitle {
+		font-size: 18px;
+		line-height: 1.5;
+	}
+}
+
+.upload {
+	display: grid;
+	gap: 16px;
+	background: $paper;
+	border: 1px solid $line;
+	border-radius: $radius;
+	padding: 24px;
+
+	&__drop {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		padding: 48px 16px;
+		border: 2px dashed $line;
+		border-radius: $radius;
+		text-align: center;
+		transition: border-color 0.15s, background 0.15s;
+		&.is-dragging {
+			border-color: $lapis;
+			background: rgba($lapis, 0.04);
+		}
+	}
+	&__icon {
+		font-size: 48px !important;
+		color: $lapis;
+	}
+	&__preview {
+		display: flex;
+		justify-content: center;
+		background: $sand;
+		border-radius: $radius;
+		img {
+			max-width: 100%;
+			max-height: 420px;
+			object-fit: contain;
+			border-radius: $radius;
+		}
+	}
+	&__controls {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px;
+	}
+	&__actions {
+		display: flex;
+		gap: 8px;
+	}
+}
+
+.result {
+	display: grid;
+	gap: 12px;
+	margin-top: 32px;
+	&--unknown {
+		background: $paper;
+		border: 1px solid $line;
+		border-radius: $radius;
+		padding: 24px;
+	}
+	&__label {
+		margin-top: 8px;
+	}
+}

@@ -4,8 +4,7 @@ Recognize famous historical and natural places of Central Asia (Uzbekistan, Kaza
 Kyrgyzstan, Tajikistan, Turkmenistan) from a photo, then show facts, a map and — where the city is
 covered — a link to hotels on [Hotelia](https://hotelia.uz).
 
-Status: **both models and the FastAPI service are ready.** The Next.js web UI comes next. Local
-only.
+Status: **working local app:** two models, FastAPI service and Next.js web UI (EN/UZ). Local only.
 
 ## Setup
 
@@ -181,6 +180,47 @@ returns it as `summary`.
   105 to 6,347 characters (the Uzbek Bibi-Khanym article has no sections), so the UI should
   shorten long texts.
 
+## Web app (Next.js)
+
+```sh
+# terminal 1 (repo root)
+uvicorn silksight.api:create_app --factory --host 127.0.0.1 --port 8000
+# terminal 2
+cd web && yarn install && yarn dev    # http://localhost:3000
+```
+
+The API address comes from `NEXT_PUBLIC_API_URL` (default `http://127.0.0.1:8000`; see
+`web/.env.example`). The stack follows Hotelia-next: Pages Router, TypeScript, MUI 5, SCSS,
+next-i18next (EN/UZ), Yarn Classic, Prettier with tabs. Routes:
+
+- `/` — drop or choose a photo and pick the model (DINOv2 + kNN by default, or the fine-tuned
+  ConvNeXt). A recognized photo shows the result card: attributed Commons photo, name, place,
+  category, UNESCO chip, the Wikipedia lead text (shortened with "Read more"), a Leaflet /
+  OpenStreetMap map and a Hotelia button for the landmark's city. When nothing passes the
+  threshold, the card says "Not recognized" and lists the closest matches. The score line
+  states that it is a model score, not the chance of being right.
+- `/landmark` — all 23 landmarks. `/landmark/detail?id=…` — the same card for one landmark.
+- `/uz/...` — Uzbek UI. A place without an Uzbek Wikipedia article shows the English text with a
+  note and is not machine-translated. Hotelia does not cover every place; for those the page
+  says so instead of linking to the nearest city.
+
+The photo goes only to the local API. The page itself still loads map tiles from OpenStreetMap
+and fonts from Google Fonts. Dev and build use separate folders (`.next-dev` and `.next`), so
+`yarn build` does not break a running `yarn dev`.
+
+Checked 2026-11-10: `yarn format:check`, `tsc --noEmit`, `yarn lint` and `next build` pass.
+In the in-app browser:
+- A Samanid Mausoleum test photo was recognized by the classifier (score 0.96), with the photo,
+  Wikipedia text, map and Hotelia (Bukhara) link.
+- A CN Tower photo (a busy city square) is a known open-set failure for the classifier: it was
+  accepted as Ala-Too Square at 0.75. kNN rejected it (0.38 < 0.71) and showed the "Not
+  recognized" card.
+- On a 375 px phone viewport, the Uzbek detail page for Big Almaty Lake showed the English-text
+  note and the "no Hotelia hotels" message.
+
+Limits: city names stay in English (Hotelia matches them that way), and Hotelia links carry no
+dates.
+
 ## Plan
 
 1. Catalog
@@ -189,4 +229,4 @@ returns it as `summary`.
 3. Model A: DINOv2/CLIP embeddings + kNN with an "unknown" threshold (done)
 4. Model B: fine-tuned classifier, compared on the same test set (done)
 5. FastAPI service (done)
-6. Next.js web app (EN/UZ): upload → result card → map → Hotelia link
+6. Next.js web app (EN/UZ): upload → result card → map → Hotelia link (done)

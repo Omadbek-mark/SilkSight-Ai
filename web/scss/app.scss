@@ -1,0 +1,19 @@
+@use 'variables' as *;
+@use 'layout';
+@use 'recognize';
+@use 'landmark';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: $font;
+	color: $ink;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}

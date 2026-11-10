@@ -14,6 +14,7 @@ outputs/
 # Next.js (web/)
 node_modules/
 web/.next/
+web/.next-dev/
 web/out/
 *.tsbuildinfo
 

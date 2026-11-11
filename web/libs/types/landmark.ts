@@ -43,7 +43,7 @@ export interface LandmarkDetail extends LandmarkSummary {
 	hotelia_url: string | null;
 }
 
-export type ModelName = 'knn' | 'classifier';
+export type ModelName = 'knn' | 'classifier' | 'ensemble';
 
 export interface Candidate {
 	landmark_id: string;
@@ -54,9 +54,12 @@ export interface Candidate {
 export interface Recognition {
 	model: ModelName;
 	score_kind: string;
-	threshold: number;
+	/** null when the answer comes from a rule (both models must agree), not one score cut */
+	threshold: number | null;
 	recognized: boolean;
 	landmark_id: string | null;
 	landmark: LandmarkSummary | null;
 	candidates: Candidate[];
+	/** ensemble only: each model's own answer */
+	members: Omit<Recognition, 'landmark' | 'members'>[];
 }

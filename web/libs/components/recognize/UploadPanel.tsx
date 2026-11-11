@@ -91,6 +91,7 @@ export default function UploadPanel(props: Props) {
 					>
 						<ToggleButton value="knn">{t('model.knn')}</ToggleButton>
 						<ToggleButton value="classifier">{t('model.classifier')}</ToggleButton>
+						<ToggleButton value="ensemble">{t('model.ensemble')}</ToggleButton>
 					</ToggleButtonGroup>
 				</div>
 				<div className="upload__actions">

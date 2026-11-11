@@ -14,7 +14,7 @@ from silksight.dataset import UNKNOWN_LABEL
 
 @dataclass(frozen=True)
 class OpenSetReport:
-    threshold: float
+    threshold: float | None  # None for rules that decide "unknown" without one score cut
     known_count: int
     unknown_count: int
     top1: float  # closed-set: best class is right, threshold ignored
@@ -58,9 +58,22 @@ def _macro_f1(labels: list[str], predicted: list[str], names: list[str]) -> floa
 def evaluate(
     scores: np.ndarray, classes: list[str], labels: list[str], threshold: float
 ) -> OpenSetReport:
-    if UNKNOWN_LABEL in classes:
-        raise ValueError("classes are the known landmarks; 'unknown' is decided by threshold")
     predicted = predict(scores, classes, threshold)
+    return evaluate_predictions(scores, classes, labels, predicted, float(threshold))
+
+
+def evaluate_predictions(
+    scores: np.ndarray,
+    classes: list[str],
+    labels: list[str],
+    predicted: list[str],
+    threshold: float | None,
+) -> OpenSetReport:
+    """Score open-set answers made by any rule; ``scores`` only feed closed-set top-1/top-3."""
+    if UNKNOWN_LABEL in classes:
+        raise ValueError("classes are the known landmarks; 'unknown' is decided by the rule")
+    if len(predicted) != len(labels):
+        raise ValueError("one prediction per photo is required")
     known = [i for i, label in enumerate(labels) if label != UNKNOWN_LABEL]
     unknown = [i for i, label in enumerate(labels) if label == UNKNOWN_LABEL]
     known_labels = [labels[i] for i in known]
@@ -77,7 +90,7 @@ def evaluate(
     unknown_rate = _rate(rejected_unknown, len(unknown))
     present = sorted(set(labels))
     return OpenSetReport(
-        threshold=float(threshold),
+        threshold=threshold,
         known_count=len(known),
         unknown_count=len(unknown),
         top1=_top_k(scores[known], classes, known_labels, 1),

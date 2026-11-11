@@ -24,15 +24,45 @@ function CandidateChips({ candidates }: { candidates: Candidate[] }) {
 	);
 }
 
+function MemberAnswers({ result }: { result: Recognition }) {
+	const { t } = useTranslation('common');
+	const localize = useLocalizedName();
+	if (result.members.length === 0) return null;
+	return (
+		<div className="result__members">
+			<Typography variant="subtitle2">{t('result.members')}</Typography>
+			<ul>
+				{result.members.map((member) => {
+					const top = member.candidates[0];
+					const answer = member.recognized
+						? `${localize(top.name)} · ${top.score.toFixed(2)}`
+						: t('result.memberUnsure', { name: localize(top.name), score: top.score.toFixed(2) });
+					return (
+						<li key={member.model}>
+							<strong>{t(`model.${member.model}`)}:</strong> {answer}
+						</li>
+					);
+				})}
+			</ul>
+			<Typography variant="body2" color="text.secondary">
+				{result.recognized ? t('result.agree') : t('result.ensembleUnknown')}
+			</Typography>
+		</div>
+	);
+}
+
 export default function RecognitionResult({ result }: { result: Recognition }) {
 	const { t } = useTranslation('common');
 	const { data: landmark, error } = useLandmark(result.landmark_id);
 	const [top, ...others] = result.candidates;
-	const scoreLine = t('result.score', {
-		score: top.score.toFixed(2),
-		kind: result.score_kind,
-		threshold: result.threshold.toFixed(2),
-	});
+	const scoreLine =
+		result.threshold === null
+			? t('result.rule')
+			: t('result.score', {
+					score: top.score.toFixed(2),
+					kind: result.score_kind,
+					threshold: result.threshold.toFixed(2),
+			  });
 
 	if (!result.recognized) {
 		return (
@@ -41,6 +71,7 @@ export default function RecognitionResult({ result }: { result: Recognition }) {
 					{t('result.unknown.title')}
 				</Typography>
 				<Typography color="text.secondary">{t('result.unknown.body')}</Typography>
+				<MemberAnswers result={result} />
 				<Typography variant="subtitle2" className="result__label">
 					{t('result.maybe')}
 				</Typography>
@@ -60,6 +91,7 @@ export default function RecognitionResult({ result }: { result: Recognition }) {
 			{error && <Alert severity="error">{t('error.load')}</Alert>}
 			{!landmark && !error && <CircularProgress />}
 			{landmark && <LandmarkInfo landmark={landmark} />}
+			<MemberAnswers result={result} />
 			<Typography variant="caption" color="text.secondary" component="p">
 				{scoreLine}
 			</Typography>

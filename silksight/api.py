@@ -108,8 +108,9 @@ def create_app(recognizers: Recognizers | None = None) -> FastAPI:
             raise HTTPException(503, f"model {model!r} is not trained: {error}") from error
         response = asdict(result)
         response["landmark"] = summary(result.landmark_id) if result.landmark_id else None
-        for candidate in response["candidates"]:
-            candidate["name"] = catalog[candidate["landmark_id"]]["display_names"]
+        for answer in (response, *response["members"]):
+            for candidate in answer["candidates"]:
+                candidate["name"] = catalog[candidate["landmark_id"]]["display_names"]
         return response
 
     return app

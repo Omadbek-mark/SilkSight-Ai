@@ -1,4 +1,5 @@
 import io
+from dataclasses import replace
 
 import numpy as np
 import pytest
@@ -134,3 +135,21 @@ def test_landmark_detail_carries_attributed_wikipedia_text_without_translation(c
     assert registan["en"]["url"].startswith("https://en.wikipedia.org/")
     assert registan["en"]["revision_id"] > 0
     assert "uz" not in almaty_lake  # no Uzbek article: left out, not translated
+
+
+def test_ensemble_answer_names_candidates_of_each_member_model():
+    class EnsembleFake(FakeRecognizers):
+        def recognize(self, image, model):
+            member = super().recognize(image, "knn")
+            other = super().recognize(image, "classifier")
+            return replace(member, model="ensemble", threshold=None, members=[member, other])
+
+    client = TestClient(create_app(EnsembleFake()))
+
+    body = client.post(
+        "/api/recognize?model=ensemble", files={"file": ("a.jpg", jpeg_bytes(), "image/jpeg")}
+    ).json()
+
+    assert body["model"] == "ensemble" and body["threshold"] is None
+    assert [m["model"] for m in body["members"]] == ["knn", "classifier"]
+    assert body["members"][1]["candidates"][0]["name"]["en"] == "Registan"

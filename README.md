@@ -124,8 +124,38 @@ Run 2026-11-10; test = 111 landmark photos + 36 unknown; one training run (one s
   B mostly answers "unknown" (6 of 9). For a travel app, "unknown" is the safer mistake.
 - Trade-offs: A needs no training, and a new landmark is added by putting its photos in the
   gallery. B needs retraining for new classes but is a single forward pass with no gallery.
-- Not tried: averaging the two models' answers. They disagree on many photos, so it might help,
-  but the combination would also have to be tuned on val only.
+
+## Ensemble: combining A and B
+
+```sh
+python -m scripts.evaluate_ensemble   # offline; writes artifacts/ensemble/report.json, params.json
+```
+
+Two rules were compared. Every choice was made on val, and test was scored once.
+- **Agreement:** answer a landmark only when both models, each with its own threshold, accept
+  the photo and name the same landmark. Nothing new is fitted.
+- **Fusion:** kNN cosine scores are turned into a softmax, with a temperature fitted on known
+  val photos (0.037). This is averaged with the classifier's softmax, and a threshold is tuned
+  on val (0.643). The raw scores are on different scales and are never averaged directly.
+
+Agreement had the better val balanced score (0.833 vs 0.754), so it was selected and is what
+the API serves. Test results (same 147 photos as above):
+
+| Model | Known accepted & right | Known wrongly rejected | Unknown rejected | Balanced | Macro-F1 |
+|---|---|---|---|---|---|
+| A: kNN | 0.667 | 0.234 | 0.694 | 0.681 | 0.683 |
+| B: classifier | 0.658 | 0.279 | 0.722 | 0.690 | 0.721 |
+| **A+B agreement** (selected on val) | 0.541 | 0.450 | 0.972 | 0.756 | 0.645 |
+| A+B fusion (not selected) | 0.586 | 0.396 | 0.778 | 0.682 | 0.647 |
+
+- **Agreement is a cautious answer, not a more accurate one.** It rejected 35 of 36 unknown
+  photos. But it also answers "unknown" for 45% of real landmark photos, against 23–28% for one
+  model. The higher balanced score comes from the unknown side.
+- **Fusion gave no gain on test.** It did worse than either model on val too.
+- **Ceiling:** at least one model is right for 122 of 147 test photos (76 both, 23 only A,
+  23 only B). That is what a perfect "pick the right model" rule would get. Neither simple rule
+  comes close.
+- The fusion rule's test numbers are reported for transparency only; the rule was picked on val.
 
 ## API (FastAPI)
 
@@ -139,7 +169,7 @@ uvicorn silksight.api:create_app --factory --host 127.0.0.1 --port 8000
 | GET | `/api/health` | status, landmark count, models loaded so far |
 | GET | `/api/landmarks` | all landmarks: names (en/uz), country, city, coordinates, photo |
 | GET | `/api/landmarks/{id}` | plus Wikipedia lead text (en/uz, attributed), Wikidata names, UNESCO site, Hotelia link |
-| POST | `/api/recognize?model=knn\|classifier` | `recognized`, `landmark`, top-3 `candidates` with scores, `threshold`, `score_kind` |
+| POST | `/api/recognize?model=knn\|classifier\|ensemble` | `recognized`, `landmark`, top-3 `candidates` with scores, `threshold`, `score_kind`; for `ensemble` also `members` (each model's own answer) |
 | GET | `/images/...` | dataset photos; each `photo` object carries author, license and source page |
 
 - Upload: one JPEG/PNG/WebP, at most 10 MB and 40 MP. The format and size are checked from the
@@ -149,6 +179,10 @@ uvicorn silksight.api:create_app --factory --host 127.0.0.1 --port 8000
 - `model` defaults to `knn` (Model A). The two models tied on test; kNN can take new landmarks
   without retraining. Both models load on first use. One lock serializes model loading and
   inference in the single local process.
+- `ensemble` runs both models and applies the rule chosen on val (`artifacts/ensemble/params.json`).
+  For the agreement rule, `threshold` is `null`, and the candidates are ranked by the fused
+  score. If either model is retrained, the API refuses the ensemble (503) until
+  `scripts.evaluate_ensemble` is re-run, since the rule was tuned on those exact thresholds.
 - Below the threshold the answer is `recognized: false`, but the top-3 candidates are still
   returned, so the UI can say "not sure — maybe…". Scores are model scores (`score_kind`), not
   accuracy.
@@ -193,8 +227,9 @@ The API address comes from `NEXT_PUBLIC_API_URL` (default `http://127.0.0.1:8000
 `web/.env.example`). The stack follows Hotelia-next: Pages Router, TypeScript, MUI 5, SCSS,
 next-i18next (EN/UZ), Yarn Classic, Prettier with tabs. Routes:
 
-- `/` — drop or choose a photo and pick the model (DINOv2 + kNN by default, or the fine-tuned
-  ConvNeXt). A recognized photo shows the result card: attributed Commons photo, name, place,
+- `/` — drop or choose a photo and pick the model: DINOv2 + kNN (default), the fine-tuned
+  ConvNeXt, or "Both models" (the ensemble). With "Both models" the result also lists what each
+  model said and whether they agreed. A recognized photo shows the result card: attributed Commons photo, name, place,
   category, UNESCO chip, the Wikipedia lead text (shortened with "Read more"), a Leaflet /
   OpenStreetMap map and a Hotelia button for the landmark's city. When nothing passes the
   threshold, the card says "Not recognized" and lists the closest matches. The score line
@@ -215,6 +250,11 @@ In the in-app browser:
 - A CN Tower photo (a busy city square) is a known open-set failure for the classifier: it was
   accepted as Ala-Too Square at 0.75. kNN rejected it (0.38 < 0.71) and showed the "Not
   recognized" card.
+- Ensemble (checked later the same day): for a Lab-i Hauz test photo where kNN was below its
+  threshold but the classifier accepted it, "Both models" showed "Not recognized" with both
+  answers. For a photo both models named Lab-i Hauz, the Uzbek page showed the card and "Ikkala
+  model bir xil joyni aytdi". Warm ensemble requests took about 0.04 s. The three model buttons
+  fit a 375 px viewport.
 - On a 375 px phone viewport, the Uzbek detail page for Big Almaty Lake showed the English-text
   note and the "no Hotelia hotels" message.
 
@@ -230,3 +270,4 @@ dates.
 4. Model B: fine-tuned classifier, compared on the same test set (done)
 5. FastAPI service (done)
 6. Next.js web app (EN/UZ): upload → result card → map → Hotelia link (done)
+7. Ensemble of A and B, rule chosen on val, served as a third model (done)
